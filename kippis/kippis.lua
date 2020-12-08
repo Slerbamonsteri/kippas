@@ -1,25 +1,20 @@
-RegisterCommand('kippas', function(source, args)
-
-    local vehicleName = 'bmx'
-
-    RequestModel(vehicleName)
-
-    while not HasModelLoaded(vehicleName) do
+RegisterCommand('kippas', function(s, a)
+    local v = 'bmx' -- Ajoneuvo joka annetaan kaatuessa
+		
+    RequestModel(v)
+    while not HasModelLoaded(v) do
         Wait(500)
     end
-
-    local playerPed = PlayerPedId()
+		
+    local p = PlayerPedId()
     local pos = GetEntityCoords(playerPed)
-
-    local vehicle = CreateVehicle(vehicleName, pos.x, pos.y, pos.z, GetEntityHeading(playerPed), true, false)
-
-    SetPedIntoVehicle(playerPed, vehicle, -1)
-
-    SetEntityAsNoLongerNeeded(vehicle)
-
-    SetModelAsNoLongerNeeded(vehicleName)
-
+    local veh = CreateVehicle(v, pos.x, pos.y, pos.z, GetEntityHeading(p), true, false)
+		
+    SetPedIntoVehicle(p, veh, -1)
+    SetEntityAsNoLongerNeeded(veh)
+    SetModelAsNoLongerNeeded(v)
+		
     TriggerEvent('chat:addMessage', {
-		args = { '^2Kipskops' }
-	})
+	args = { '^2Kipskops' }
+    })
 end, false)
