@@ -7,7 +7,7 @@ RegisterCommand('kippas', function(s, a)
     end
 		
     local p = PlayerPedId()
-    local pos = GetEntityCoords(playerPed)
+    local pos = GetEntityCoords(p)
     local veh = CreateVehicle(v, pos.x, pos.y, pos.z, GetEntityHeading(p), true, false)
 		
     SetPedIntoVehicle(p, veh, -1)
@@ -18,3 +18,4 @@ RegisterCommand('kippas', function(s, a)
 	args = { '^2Kipskops' }
     })
 end, false)
+
